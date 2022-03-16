@@ -24,8 +24,8 @@ function version_greater_or_equal() {
     [[ "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1" || "$1" == "$2" ]];
 }
 
-dockerRepo="monogramm/docker-taiga-events"
-latests=( $( curl -fsSL 'https://api.github.com/repos/taigaio/taiga-events/tags' |tac|tac| \
+dockerRepo="xolyu/docker-taiga-events"
+latests=( $( curl -fsSL 'https://api.github.com/repos/kaleidos-ventures/taiga-events/tags' |tac|tac| \
     grep -oE '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+' | \
     sort -urV )
     legacy

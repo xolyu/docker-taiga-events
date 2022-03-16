@@ -17,7 +17,7 @@ COPY config.json /taiga/
 WORKDIR /usr/src/taiga-events
 
 # Get Taiga-Events
-ADD https://github.com/taigaio/taiga-events/archive/${TAIGA_VERSION}.tar.gz /tmp/taiga-events-${TAIGA_VERSION}.tar.gz
+ADD https://github.com/kaleidos-ventures/taiga-events/archive/${TAIGA_VERSION}.tar.gz /tmp/taiga-events-${TAIGA_VERSION}.tar.gz
 
 # Install the packages we need
 # Install Taiga from tag archive
@@ -50,11 +50,11 @@ ARG VERSION=%%VERSION%%
 
 # Container labels (http://label-schema.org/)
 # Container annotations (https://github.com/opencontainers/image-spec)
-LABEL maintainer="Monogramm Maintainers <opensource at monogramm dot io>" \
+LABEL maintainer="Xolyu" \
       product="Taiga Events" \
       version=$VERSION \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/Monogramm/docker-taiga-events/" \
+      org.label-schema.vcs-url="https://github.com/xolyu/docker-taiga-events/" \
       org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="Taiga Events" \
       org.label-schema.description="Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable." \
@@ -63,11 +63,11 @@ LABEL maintainer="Monogramm Maintainers <opensource at monogramm dot io>" \
       org.label-schema.version=$VERSION \
       org.label-schema.schema-version="1.0" \
       org.opencontainers.image.revision=$VCS_REF \
-      org.opencontainers.image.source="https://github.com/Monogramm/docker-taiga-events/" \
+      org.opencontainers.image.source="https://github.com/xolyu/docker-taiga-events/" \
       org.opencontainers.image.created=$BUILD_DATE \
       org.opencontainers.image.title="Taiga Events" \
       org.opencontainers.image.description="Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable." \
       org.opencontainers.image.url="https://www.taiga.io/" \
       org.opencontainers.image.vendor="Taiga" \
       org.opencontainers.image.version=$VERSION \
-      org.opencontainers.image.authors="Monogramm Maintainers <opensource at monogramm dot io>"
+      org.opencontainers.image.authors="Xolyu"
