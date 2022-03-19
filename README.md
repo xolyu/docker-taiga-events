@@ -1,15 +1,16 @@
 [![License: AGPL v3][uri_license_image]][uri_license]
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Monogramm/docker-taiga-events/Docker%20Image%20CI)](https://github.com/Monogramm/docker-taiga-events/actions)
-[![Docker Automated buid](https://img.shields.io/docker/cloud/build/monogramm/docker-taiga-events.svg)](https://hub.docker.com/r/monogramm/docker-taiga-events/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/monogramm/docker-taiga-events.svg)](https://hub.docker.com/r/monogramm/docker-taiga-events/)
-[![](https://images.microbadger.com/badges/version/monogramm/docker-taiga-events.svg)](https://microbadger.com/images/monogramm/docker-taiga-events)
-[![](https://images.microbadger.com/badges/image/monogramm/docker-taiga-events.svg)](https://microbadger.com/images/monogramm/docker-taiga-events)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/xolyu/docker-taiga-events/Docker%20Image%20CI)](https://github.com/xolyu/docker-taiga-events/actions)
+[![Docker Automated buid](https://img.shields.io/docker/cloud/build/xolyu/docker-taiga-events.svg)](https://hub.docker.com/r/xolyu/docker-taiga-events/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/xolyu/docker-taiga-events.svg)](https://hub.docker.com/r/xolyu/docker-taiga-events/)
+[![](https://images.microbadger.com/badges/version/xolyu/docker-taiga-events.svg)](https://microbadger.com/images/xolyu/docker-taiga-events)
+[![](https://images.microbadger.com/badges/image/xolyu/docker-taiga-events.svg)](https://microbadger.com/images/xolyu/docker-taiga-events)
 
 # Docker image for taiga-events
 
-This Docker repository provides the [taiga-events](https://github.com/taigaio/taiga-events) server with a configuration suitable to use with [taiga-back](https://github.com/taigaio/taiga-back).
+This Docker repository provides the [taiga-events](https://github.com/kaleidos-ventures/taiga-events) server with a configuration suitable to use with [taiga-back](https://github.com/kaleidos-ventures/taiga-back).
 
-This image was inspired by [benhutchins/docker-taiga-events](https://github.com/benhutchins/docker-taiga-events).
+This image is a fork of [Monogramm/docker-taiga-front-base](https://github.com/Monogramm/docker-taiga-front-base) 
+which itself was inspired by [benhutchins/docker-taiga-events](https://github.com/benhutchins/docker-taiga-events).
 
 ## What is **Taiga**
 
@@ -19,7 +20,7 @@ Taiga is a project management platform for startups and agile developers & desig
 
 ## Supported tags
 
-[Dockerhub monogramm/docker-taiga-events](https://hub.docker.com/r/monogramm/docker-taiga-events/)
+[Dockerhub xolyu/docker-taiga-events](https://hub.docker.com/r/xolyu/docker-taiga-events/)
 
 <!-- >Docker Tags -->
 
@@ -47,7 +48,7 @@ If the image does not include the packages you need, you can easily build your o
 Start your derived image with the `FROM` statement and add whatever you like.
 
 ```Dockerfile
-FROM monogramm/docker-taiga-events:alpine
+FROM xolyu/docker-taiga-events:alpine
 
 RUN ...
 
@@ -73,7 +74,7 @@ Your Dockerfile(s) will be generated in the `images/` folder.
 
 The Taiga-Events image supports auto configuration via environment variables. You can preconfigure nearly everything that is available in `config.json`.
 
-See [config.example.json](https://github.com/taigaio/taiga-events/blob/master/config.example.json) for more details on configuration.
+See [config.json](https://github.com/xolyu/docker-taiga-events/blob/xolyu_master/template/config.json) and [entrypoint.sh](https://github.com/xolyu/docker-taiga-events/blob/xolyu_master/template/entrypoint.sh) for more details on configuration.
 
 ### RABBIT
 
