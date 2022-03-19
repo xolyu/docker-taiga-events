@@ -16,7 +16,7 @@ variants=(
 )
 
 min_version='6.0'
-dockerLatest='master'
+dockerLatest='6.5'
 dockerDefaultVariant='alpine'
 
 # version_greater_or_equal A B returns whether A >= B
@@ -28,10 +28,7 @@ dockerRepo="xolyu/docker-taiga-events"
 latests=( $( curl -fsSL 'https://api.github.com/repos/kaleidos-ventures/taiga-events/tags' |tac|tac| \
     grep -oE '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+' | \
     sort -urV )
-    legacy
 )
-
-legacyHash=77a775eddaadd77cb9bddb57eba81928868d895f
 
 # Remove existing images
 echo "reset docker images"
@@ -71,17 +68,10 @@ for latest in "${latests[@]}"; do
             cp -r "template/test" "$dir/"
 
             # Replace the variables.
-            if [ "$latest" = "legacy" ]; then
-                sed -ri -e '
-                    s/%%VARIANT%%/'"$variant"'/g;
-                    s/%%VERSION%%/'"$legacyHash"'/g;
-                ' "$dir/Dockerfile"
-            else
-                sed -ri -e '
-                    s/%%VARIANT%%/'"$variant"'/g;
-                    s/%%VERSION%%/'"$latest"'/g;
-                ' "$dir/Dockerfile"
-            fi
+            sed -ri -e '
+                s/%%VARIANT%%/'"$variant"'/g;
+                s/%%VERSION%%/'"$latest"'/g;
+            ' "$dir/Dockerfile"
 
             # DockerHub hooks
             sed -ri -e '
@@ -96,12 +86,6 @@ for latest in "${latests[@]}"; do
                     export DOCKER_TAGS="$latest-$tagVariant $version-$tagVariant $tagVariant $latest $version latest "
                 else
                     export DOCKER_TAGS="$latest-$tagVariant $version-$tagVariant $tagVariant "
-                fi
-            elif [ "$latest" = "legacy" ]; then
-                if [ "$tagVariant" = "$dockerDefaultVariant" ]; then
-                    export DOCKER_TAGS="$latest-$tagVariant 4.2-$tagVariant 5.0-$tagVariant 5.5-$tagVariant $latest 4.2 5.0 5.5 "
-                else
-                    export DOCKER_TAGS="$latest-$tagVariant 4.2-$tagVariant 5.0-$tagVariant 5.5-$tagVariant "
                 fi
             elif [ "$version" = "$latest" ]; then
                 if [ "$tagVariant" = "$dockerDefaultVariant" ]; then
